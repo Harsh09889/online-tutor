@@ -1,5 +1,6 @@
 import "@/styles/globals.css"
 import { Metadata } from "next"
+import ReduxProvider from "@/redux/reduxProvider"
 
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
@@ -40,10 +41,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
             fontSans.variable
           )}
         >
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            {children}
-            <TailwindIndicator />
-          </ThemeProvider>
+          <ReduxProvider>
+            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+              {children}
+              <TailwindIndicator />
+            </ThemeProvider>
+          </ReduxProvider>
         </body>
       </html>
     </>
